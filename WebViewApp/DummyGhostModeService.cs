@@ -2,6 +2,6 @@ namespace WebViewApp;
 
 public class DummyGhostModeService : IGhostModeService
 {
-    public void EnableGhostMode() { }
+    public Task EnableGhostMode() => Task.CompletedTask;
     public void DisableGhostMode() { }
 }

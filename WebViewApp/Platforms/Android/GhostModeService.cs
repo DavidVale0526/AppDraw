@@ -12,10 +12,25 @@ public class GhostModeService : IGhostModeService
     private const string ChannelId = "ghost_mode_channel";
     private const int NotificationId = 1001;
 
-    public void EnableGhostMode()
+    public async Task EnableGhostMode()
     {
         var activity = Microsoft.Maui.ApplicationModel.Platform.CurrentActivity;
         if (activity == null) return;
+
+        // Request notification permission for Android 13+
+        if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu)
+        {
+            var status = await Microsoft.Maui.ApplicationModel.Permissions.CheckStatusAsync<Microsoft.Maui.ApplicationModel.Permissions.PostNotifications>();
+            if (status != Microsoft.Maui.ApplicationModel.PermissionStatus.Granted)
+            {
+                status = await Microsoft.Maui.ApplicationModel.Permissions.RequestAsync<Microsoft.Maui.ApplicationModel.Permissions.PostNotifications>();
+            }
+
+            if (status != Microsoft.Maui.ApplicationModel.PermissionStatus.Granted)
+            {
+                return;
+            }
+        }
 
         activity.RunOnUiThread(() =>
         {
@@ -58,19 +73,22 @@ public class GhostModeService : IGhostModeService
 
         if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
         {
-            var channel = new NotificationChannel(ChannelId, "Ghost Mode", NotificationImportance.Low)
+            var channel = new NotificationChannel(ChannelId, "Ghost Mode", NotificationImportance.High)
             {
-                Description = "Ghost Mode Status"
+                Description = "Ghost Mode Status",
+                LockscreenVisibility = NotificationVisibility.Public
             };
             notificationManager.CreateNotificationChannel(channel);
         }
 
         var notification = new NotificationCompat.Builder(activity, ChannelId)
-            .SetContentTitle("Ghost Mode Active")
-            .SetContentText("The app is now semitransparent and non-touchable.")
+            .SetContentTitle("Modo Fantasma Activo")
+            .SetContentText("Toca 'Restaurar' para volver a la normalidad.")
             .SetSmallIcon(global::Android.Resource.Drawable.IcDialogInfo)
             .SetOngoing(true)
-            .AddAction(global::Android.Resource.Drawable.IcMenuRevert, "Restore", pendingIntent)
+            .SetPriority(NotificationCompat.PriorityHigh)
+            .SetVisibility(NotificationCompat.VisibilityPublic)
+            .AddAction(global::Android.Resource.Drawable.IcMenuRevert, "Restaurar", pendingIntent)
             .Build();
 
         notificationManager.Notify(NotificationId, notification);

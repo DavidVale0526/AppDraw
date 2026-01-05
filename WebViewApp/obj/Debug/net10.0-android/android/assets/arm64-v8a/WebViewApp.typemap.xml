@@ -1,4 +1,4 @@
-<api type="debug" assembly-name="WebViewApp" mvid="9118437c6c3c4a1983cf3e542f99c4fa">
+<api type="debug" assembly-name="WebViewApp" mvid="3dc8dba015b84e248bd2a94f1143d0bc">
   <java-to-managed>
     <entry java-name="crc64500a51de1a538666/MainActivity" managed-name="WebViewApp.MainActivity, WebViewApp" managed-type-token-id="33554444" />
     <entry java-name="crc64500a51de1a538666/MainApplication" managed-name="WebViewApp.MainApplication, WebViewApp" managed-type-token-id="33554445" />

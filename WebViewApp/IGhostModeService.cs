@@ -2,6 +2,6 @@ namespace WebViewApp;
 
 public interface IGhostModeService
 {
-    void EnableGhostMode();
+    Task EnableGhostMode();
     void DisableGhostMode();
 }

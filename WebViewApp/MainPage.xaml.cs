@@ -10,9 +10,9 @@
             _ghostModeService = ghostModeService;
         }
 
-        private void OnGhostModeClicked(object? sender, EventArgs e)
+        private async void OnGhostModeClicked(object? sender, EventArgs e)
         {
-            _ghostModeService.EnableGhostMode();
+            await _ghostModeService.EnableGhostMode();
         }
     }
 }

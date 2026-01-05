@@ -1,0 +1,24 @@
+<api>
+  <jcw-types>
+    <type name="MainActivity" package="crc64500a51de1a538666" application_java_class="android.app.Application" mono_runtime_initialization="mono.MonoPackageManager.LoadApplication (context);" extends_type="crc6488302ad6e9e4df1a.MauiAppCompatActivity" partial_assembly_qualified_name="WebViewApp.MainActivity, WebViewApp">
+      <constructors>
+        <constructor name="MainActivity" method="n_.ctor:()V:" jni_signature="()V" managed_parameters="" retval="void" is_dynamically_registered="True" />
+        <constructor name="MainActivity" method="n_.ctor:(I)V:" jni_signature="(I)V" managed_parameters="System.Int32, System.Private.CoreLib" params="int p0" retval="void" is_dynamically_registered="True" super_call="p0" activate_call="p0" />
+      </constructors>
+    </type>
+    <type name="MainApplication" package="crc64500a51de1a538666" application_java_class="android.app.Application" mono_runtime_initialization="mono.MonoPackageManager.LoadApplication (context);" extends_type="crc6488302ad6e9e4df1a.MauiApplication" is_application="True" partial_assembly_qualified_name="WebViewApp.MainApplication, WebViewApp" application_constructor="MainApplication" />
+    <type name="GhostModeReceiver" package="crc649110d7372c415b47" application_java_class="android.app.Application" mono_runtime_initialization="mono.MonoPackageManager.LoadApplication (context);" extends_type="android.content.BroadcastReceiver" partial_assembly_qualified_name="WebViewApp.Platforms.Android.GhostModeReceiver, WebViewApp">
+      <constructors>
+        <constructor name="GhostModeReceiver" method="n_.ctor:()V:" jni_signature="()V" managed_parameters="" retval="void" is_dynamically_registered="True" />
+      </constructors>
+      <methods>
+        <method name="onReceive" method="n_onReceive:(Landroid/content/Context;Landroid/content/Intent;)V:GetOnReceive_Landroid_content_Context_Landroid_content_Intent_Handler" jni_signature="(Landroid/content/Context;Landroid/content/Intent;)V" params="android.content.Context p0, android.content.Intent p1" retval="void" is_dynamically_registered="True" super_call="p0, p1" activate_call="p0, p1" />
+      </methods>
+    </type>
+  </jcw-types>
+  <acw-types partial-assembly-name="WebViewApp" module-name="WebViewApp.dll">
+    <type assembly-qualified-name="WebViewApp.MainActivity, WebViewApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="webviewapp.MainActivity" java-key="crc64500a51de1a538666.MainActivity" managed-key="WebViewApp.MainActivity" partial-assembly-qualified-name="WebViewApp.MainActivity, WebViewApp" />
+    <type assembly-qualified-name="WebViewApp.MainApplication, WebViewApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="webviewapp.MainApplication" java-key="crc64500a51de1a538666.MainApplication" managed-key="WebViewApp.MainApplication" partial-assembly-qualified-name="WebViewApp.MainApplication, WebViewApp" />
+    <type assembly-qualified-name="WebViewApp.Platforms.Android.GhostModeReceiver, WebViewApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="webviewapp.platforms.android.GhostModeReceiver" java-key="crc649110d7372c415b47.GhostModeReceiver" managed-key="WebViewApp.Platforms.Android.GhostModeReceiver" partial-assembly-qualified-name="WebViewApp.Platforms.Android.GhostModeReceiver, WebViewApp" />
+  </acw-types>
+</api>

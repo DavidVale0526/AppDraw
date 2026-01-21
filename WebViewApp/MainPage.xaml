@@ -16,7 +16,7 @@
         <!-- Top UI Container (Can be hidden) -->
         <VerticalStackLayout x:Name="TopLevelUi" Grid.Row="0" Spacing="5">
             <!-- Tabs and Main Actions Section -->
-            <Grid ColumnDefinitions="*, Auto, Auto, Auto, Auto, Auto, Auto" BackgroundColor="#f0f0f0" Padding="5">
+            <Grid ColumnDefinitions="*, Auto, Auto, Auto, Auto, Auto, Auto, Auto" BackgroundColor="#f0f0f0" Padding="5">
                 <CollectionView x:Name="TabsCollection" 
                                 Grid.Column="0"
                                 HorizontalOptions="Fill"
@@ -58,8 +58,9 @@
                 <Button Grid.Column="2" x:Name="DesktopModeBtn" Text="📱" Clicked="OnToggleDesktopModeClicked" WidthRequest="40" HeightRequest="40" Margin="2,0" BackgroundColor="Transparent" TextColor="#512BD4"/>
                 <Button Grid.Column="3" Text="🔄" Clicked="OnRotateImageClicked" WidthRequest="40" HeightRequest="40" Margin="2,0" BackgroundColor="Transparent" TextColor="#512BD4" ToolTipProperties.Text="Rotar Imagen"/>
                 <Button Grid.Column="4" Text="🖼️" Clicked="OnPickImageClicked" WidthRequest="40" HeightRequest="40" Margin="2,0" BackgroundColor="Transparent" TextColor="#512BD4"/>
-                <Button Grid.Column="5" Text="👻" Clicked="OnToggleGhostModeClicked" WidthRequest="40" HeightRequest="40" Margin="2,0" BackgroundColor="Transparent" TextColor="#512BD4"/>
-                <Button Grid.Column="6" Text="📍" Clicked="OnShowFloatingIconClicked" WidthRequest="40" HeightRequest="40" Margin="2,0" BackgroundColor="Transparent" TextColor="#512BD4"/>
+                <Button Grid.Column="5" Text="📐" Clicked="OnToggleTransformModeClicked" WidthRequest="40" HeightRequest="40" Margin="2,0" BackgroundColor="Transparent" TextColor="#512BD4" ToolTipProperties.Text="Modo Transformación"/>
+                <Button Grid.Column="6" Text="👻" Clicked="OnToggleGhostModeClicked" WidthRequest="40" HeightRequest="40" Margin="2,0" BackgroundColor="Transparent" TextColor="#512BD4"/>
+                <Button Grid.Column="7" Text="📍" Clicked="OnShowFloatingIconClicked" WidthRequest="40" HeightRequest="40" Margin="2,0" BackgroundColor="Transparent" TextColor="#512BD4"/>
             </Grid>
 
             <!-- Navigation Bar -->
@@ -127,30 +128,47 @@
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnImageTapped" NumberOfTapsRequired="1" />
                         <TapGestureRecognizer Tapped="OnImageDoubleTapped" NumberOfTapsRequired="2" />
-                        <PanGestureRecognizer PanUpdated="OnPanUpdated" />
                     </Image.GestureRecognizers>
                 </Image>
 
-                <!-- Manual Zoom Controls -->
-                <VerticalStackLayout VerticalOptions="End" HorizontalOptions="End" Margin="20" Spacing="15">
-                    <Button Text="+" 
-                            Clicked="OnZoomInClicked" 
-                            WidthRequest="60" 
-                            HeightRequest="60" 
-                            CornerRadius="30" 
-                            BackgroundColor="#512BD4" 
-                            TextColor="White" 
-                            FontSize="24"
-                            Shadow="{Shadow Brush=Black, Offset='2,2', Radius=5, Opacity=0.5}"/>
-                    <Button Text="-" 
-                            Clicked="OnZoomOutClicked" 
-                            WidthRequest="60" 
-                            HeightRequest="60" 
-                            CornerRadius="30" 
-                            BackgroundColor="#512BD4" 
-                            TextColor="White" 
-                            FontSize="24"
-                            Shadow="{Shadow Brush=Black, Offset='2,2', Radius=5, Opacity=0.5}"/>
+                <!-- Mode Selection Toolbar -->
+                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="End" Margin="10" Spacing="15">
+                    
+                    <!-- Close Button -->
+                    <Button Text="✕" 
+                            Clicked="OnCloseImageClicked"
+                            WidthRequest="50" HeightRequest="50" CornerRadius="25"
+                            BackgroundColor="#D32F2F" TextColor="White" FontSize="20" FontAttributes="Bold"
+                            Shadow="{Shadow Brush=Black, Offset='2,2', Radius=3, Opacity=0.8}"/>
+
+                    <BoxView HeightRequest="1" Color="#CCCCCC" WidthRequest="40" Margin="0,5"/>
+
+                    <!-- Pan Mode -->
+                    <Button x:Name="BtnPanMode"
+                            Text="✋" 
+                            Clicked="OnPanModeClicked" 
+                            WidthRequest="50" HeightRequest="50" CornerRadius="25"
+                            BackgroundColor="#512BD4" TextColor="White" FontSize="20"
+                            ToolTipProperties.Text="Mover"
+                            Shadow="{Shadow Brush=Black, Offset='2,2', Radius=3, Opacity=0.5}"/>
+
+                    <!-- Zoom Mode -->
+                    <Button x:Name="BtnZoomMode"
+                            Text="🔍" 
+                            Clicked="OnZoomModeClicked" 
+                            WidthRequest="50" HeightRequest="50" CornerRadius="25"
+                            BackgroundColor="#E0E0E0" TextColor="#333" FontSize="20"
+                            ToolTipProperties.Text="Acercar/Alejar (Deslizar Arriba/Abajo)"
+                            Shadow="{Shadow Brush=Black, Offset='2,2', Radius=3, Opacity=0.5}"/>
+
+                    <!-- Rotate Mode -->
+                    <Button x:Name="BtnRotateMode"
+                            Text="🔄" 
+                            Clicked="OnRotateModeClicked" 
+                            WidthRequest="50" HeightRequest="50" CornerRadius="25"
+                            BackgroundColor="#E0E0E0" TextColor="#333" FontSize="20"
+                            ToolTipProperties.Text="Rotar (Deslizar Arriba/Abajo)"
+                            Shadow="{Shadow Brush=Black, Offset='2,2', Radius=3, Opacity=0.5}"/>
                 </VerticalStackLayout>
             </Grid>
 

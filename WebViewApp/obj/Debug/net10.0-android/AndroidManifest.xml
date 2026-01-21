@@ -21,6 +21,7 @@
     </activity>
     <service android:enabled="true" android:exported="false" android:name="crc649110d7372c415b47.FloatingIconService" />
     <receiver android:enabled="true" android:exported="false" android:name="crc649110d7372c415b47.GhostModeReceiver" />
+    <service android:enabled="true" android:exported="false" android:name="crc649110d7372c415b47.TransformIconService" />
     <activity android:configChanges="orientation|screenSize" android:exported="false" android:name="crc6468b6408a11370c2f.WebAuthenticatorIntermediateActivity" />
     <provider android:authorities="com.companyname.webviewapp.fileProvider" android:exported="false" android:grantUriPermissions="true" android:name="microsoft.maui.essentials.fileProvider">
       <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/microsoft_maui_essentials_fileprovider_file_paths" />

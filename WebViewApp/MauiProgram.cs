@@ -22,9 +22,11 @@ namespace WebViewApp
             builder.Services.AddTransient<MainPage>();
 
 #if ANDROID
-            builder.Services.AddSingleton<IGhostModeService, WebViewApp.Platforms.Android.GhostModeService>();
+		builder.Services.AddSingleton<IGhostModeService, WebViewApp.Platforms.Android.GhostModeService>();
+		builder.Services.AddSingleton<ITransformService, WebViewApp.Platforms.Android.TransformService>();
 #else
-            builder.Services.AddSingleton<IGhostModeService, DummyGhostModeService>();
+		builder.Services.AddSingleton<IGhostModeService, DummyGhostModeService>();
+		builder.Services.AddSingleton<ITransformService, DummyTransformService>();
 #endif
 
             return builder.Build();

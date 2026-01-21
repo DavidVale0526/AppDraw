@@ -8,6 +8,7 @@ namespace WebViewApp
     public partial class MainPage : ContentPage
     {
         private readonly IGhostModeService _ghostModeService;
+        private readonly ITransformService _transformService;
         public ObservableCollection<WebTab> Tabs { get; } = new();
         public ObservableCollection<Favorite> Favorites { get; } = new();
         private WebTab? _activeTab;
@@ -17,14 +18,14 @@ namespace WebViewApp
 
         // Image Transformation Fields
         private double _currentScale = 1;
-        private double _startScale = 1;
         private double _xOffset = 0;
         private double _yOffset = 0;
 
-        public MainPage(IGhostModeService ghostModeService)
+        public MainPage(IGhostModeService ghostModeService, ITransformService transformService)
         {
             InitializeComponent();
             _ghostModeService = ghostModeService;
+            _transformService = transformService;
             
             // Restore opacity preference
             float savedOpacity = Preferences.Default.Get("GhostModeOpacity", 0.5f);
@@ -38,11 +39,43 @@ namespace WebViewApp
             
             LoadFavorites();
             AddNewTab("https://www.google.com");
+
+            _transformService.ImageCaptured += OnTransformImageCaptured;
+        }
+
+
+        private void OnTransformImageCaptured(object? sender, byte[] imageBytes)
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                try
+                {
+                    // Reset to defaults
+                    OnImageDoubleTapped(this, EventArgs.Empty);
+                    
+                    OverlayImage.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                    ImageContainer.IsVisible = true;
+                    MainWebView.IsVisible = false;
+                    UrlEntry.Text = "🖼️ Modo Transformación";
+                    
+                    // Reset tool state
+                    SetTransformMode(TransformMode.Pan);
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Error", "No se pudo activar el modo transformación: " + ex.Message, "OK");
+                }
+            });
         }
 
         private void OnToggleGhostModeClicked(object? sender, EventArgs e)
         {
             _ghostModeService.ToggleGhostMode();
+        }
+
+        private void OnToggleTransformModeClicked(object? sender, EventArgs e)
+        {
+            _transformService.ToggleTransformIcon();
         }
 
         private void OnShowFloatingIconClicked(object? sender, EventArgs e)
@@ -54,7 +87,7 @@ namespace WebViewApp
         {
             try
             {
-                var photo = await MediaPicker.Default.PickPhotoAsync();
+                var photo = await MediaPicker.Default.PickPhotoAsync(new MediaPickerOptions { Title = "Selecciona una imagen" });
                 if (photo != null)
                 {
                     OnImageDoubleTapped(this, EventArgs.Empty);
@@ -66,7 +99,7 @@ namespace WebViewApp
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error", "No se pudo cargar la imagen: " + ex.Message, "OK");
+                await DisplayAlertAsync("Error", "No se pudo cargar la imagen: " + ex.Message, "OK");
             }
         }
 
@@ -105,31 +138,78 @@ namespace WebViewApp
             OverlayImage.Scale = _currentScale;
         }
 
+        private void OnCloseImageClicked(object sender, EventArgs e)
+        {
+            OnImageTapped(sender, e);
+        }
+
+
+        // Transformation Modes
+        private enum TransformMode { Pan, Zoom, Rotate }
+        private TransformMode _transformMode = TransformMode.Pan;
+
+        // Base values for gestures
+        private double _startScale;
+        private double _startRotation;
+        private double _startX;
+        private double _startY;
+
+        private void OnPanModeClicked(object sender, EventArgs e) => SetTransformMode(TransformMode.Pan);
+        private void OnZoomModeClicked(object sender, EventArgs e) => SetTransformMode(TransformMode.Zoom);
+        private void OnRotateModeClicked(object sender, EventArgs e) => SetTransformMode(TransformMode.Rotate);
+
+        private void SetTransformMode(TransformMode mode)
+        {
+            _transformMode = mode;
+            
+            // Visual feedback
+            BtnPanMode.BackgroundColor = mode == TransformMode.Pan ? Color.FromArgb("#512BD4") : Color.FromArgb("#E0E0E0");
+            BtnPanMode.TextColor = mode == TransformMode.Pan ? Colors.White : Color.FromArgb("#333");
+
+            BtnZoomMode.BackgroundColor = mode == TransformMode.Zoom ? Color.FromArgb("#512BD4") : Color.FromArgb("#E0E0E0");
+            BtnZoomMode.TextColor = mode == TransformMode.Zoom ? Colors.White : Color.FromArgb("#333");
+
+            BtnRotateMode.BackgroundColor = mode == TransformMode.Rotate ? Color.FromArgb("#512BD4") : Color.FromArgb("#E0E0E0");
+            BtnRotateMode.TextColor = mode == TransformMode.Rotate ? Colors.White : Color.FromArgb("#333");
+        }
+
         private void OnPanUpdated(object sender, PanUpdatedEventArgs e)
         {
             switch (e.StatusType)
             {
                 case GestureStatus.Started:
-                    // Confirm starting points
+                    _startX = OverlayImage.TranslationX;
+                    _startY = OverlayImage.TranslationY;
+                    _startScale = OverlayImage.Scale;
+                    _startRotation = OverlayImage.Rotation;
                     break;
+
                 case GestureStatus.Running:
-                    // TotalX is the cumulative distance since gesture start
-                    double newX = _xOffset + e.TotalX;
-                    double newY = _yOffset + e.TotalY;
-
-                    // Get screen bounds for safety clamping
-                    double screenWidth = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density;
-                    double screenHeight = DeviceDisplay.MainDisplayInfo.Height / DeviceDisplay.MainDisplayInfo.Density;
-
-                    // Limit translation so the image stays somewhat visible (within 1.5 screen sizes)
-                    OverlayImage.TranslationX = Math.Clamp(newX, -screenWidth * 1.5, screenWidth * 1.5);
-                    OverlayImage.TranslationY = Math.Clamp(newY, -screenHeight * 1.5, screenHeight * 1.5);
+                    if (_transformMode == TransformMode.Pan)
+                    {
+                        // Classic Pan
+                        OverlayImage.TranslationX = _startX + e.TotalX;
+                        OverlayImage.TranslationY = _startY + e.TotalY;
+                    }
+                    else if (_transformMode == TransformMode.Zoom)
+                    {
+                        // Up (negative Y) zooms IN, Down zooms OUT
+                        // Sensitivity factor
+                        double zoomFactor = -e.TotalY * 0.01; 
+                        double newScale = Math.Clamp(_startScale + zoomFactor, 0.5, 10.0);
+                        OverlayImage.Scale = newScale;
+                    }
+                    else if (_transformMode == TransformMode.Rotate)
+                    {
+                        // Up/Down rotates
+                        double rotationDelta = e.TotalY * 0.5;
+                        OverlayImage.Rotation = _startRotation + rotationDelta;
+                    }
                     break;
+
                 case GestureStatus.Completed:
                 case GestureStatus.Canceled:
-                    // Freeze the position for the next movement start
-                    _xOffset = OverlayImage.TranslationX;
-                    _yOffset = OverlayImage.TranslationY;
+                    // Cleanup if needed
                     break;
             }
         }
@@ -351,5 +431,14 @@ namespace WebViewApp
                 Preferences.Default.Set("GhostModeOpacity", (float)e.NewValue);
             }
         }
+
+        private async Task DisplayAlertAsync(string title, string message, string cancel)
+        {
+            await DisplayAlert(title, message, cancel);
+        }
+
+#if ANDROID
+        // Native gestures removed as per user request for button-based modes
+#endif
     }
 }

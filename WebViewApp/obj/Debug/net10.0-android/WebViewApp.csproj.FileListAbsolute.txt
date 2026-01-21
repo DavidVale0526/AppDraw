@@ -1616,3 +1616,7 @@ C:\Users\HP Pavilioh Gaming\source\repos\WebViewApp\WebViewApp\obj\Debug\net10.0
 C:\Users\HP Pavilioh Gaming\source\repos\WebViewApp\WebViewApp\obj\Debug\net10.0-android\android\src\crc649110d7372c415b47\FloatingIconService.java
 C:\Users\HP Pavilioh Gaming\source\repos\WebViewApp\WebViewApp\obj\Debug\net10.0-android\android\src\crc649110d7372c415b47\FloatingIconService_FloatingTouchListener.java
 C:\Users\HP Pavilioh Gaming\source\repos\WebViewApp\WebViewApp\obj\Debug\net10.0-android\resizetizer\r\drawable\expand_icon.png
+C:\Users\HP Pavilioh Gaming\source\repos\WebViewApp\WebViewApp\obj\Debug\net10.0-android\android\src\crc649110d7372c415b47\TransformIconService.java
+C:\Users\HP Pavilioh Gaming\source\repos\WebViewApp\WebViewApp\obj\Debug\net10.0-android\android\src\crc649110d7372c415b47\TransformIconService_TransformTouchListener.java
+C:\Users\HP Pavilioh Gaming\source\repos\WebViewApp\WebViewApp\obj\Debug\net10.0-android\android\src\crc649110d7372c415b47\TransformService_TransformGestureDetector_ScaleListener.java
+C:\Users\HP Pavilioh Gaming\source\repos\WebViewApp\WebViewApp\obj\Debug\net10.0-android\android\src\crc649110d7372c415b47\NativeGestureHandler_ScaleListener.java

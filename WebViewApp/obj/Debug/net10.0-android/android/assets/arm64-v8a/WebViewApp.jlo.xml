@@ -23,10 +23,18 @@
       </implemented_interfaces>
       <constructors>
         <constructor name="FloatingIconService_FloatingTouchListener" method="n_.ctor:()V:" jni_signature="()V" managed_parameters="" retval="void" is_dynamically_registered="True" />
-        <constructor name="FloatingIconService_FloatingTouchListener" method="n_.ctor:(Landroid/view/WindowManager$LayoutParams;Landroid/view/WindowManager;)V:" jni_signature="(Landroid/view/WindowManager$LayoutParams;Landroid/view/WindowManager;)V" managed_parameters="Android.Views.WindowManagerLayoutParams, Mono.Android:Android.Views.IWindowManager, Mono.Android" params="android.view.WindowManager.LayoutParams p0, android.view.WindowManager p1" retval="void" is_dynamically_registered="True" super_call="" activate_call="p0, p1" />
+        <constructor name="FloatingIconService_FloatingTouchListener" method="n_.ctor:(Landroid/view/WindowManager$LayoutParams;Landroid/view/WindowManager;Landroid/content/Context;)V:" jni_signature="(Landroid/view/WindowManager$LayoutParams;Landroid/view/WindowManager;Landroid/content/Context;)V" managed_parameters="Android.Views.WindowManagerLayoutParams, Mono.Android:Android.Views.IWindowManager, Mono.Android:Android.Content.Context, Mono.Android" params="android.view.WindowManager.LayoutParams p0, android.view.WindowManager p1, android.content.Context p2" retval="void" is_dynamically_registered="True" super_call="" activate_call="p0, p1, p2" />
       </constructors>
       <methods>
         <method name="onTouch" method="n_onTouch:(Landroid/view/View;Landroid/view/MotionEvent;)Z:GetOnTouch_Landroid_view_View_Landroid_view_MotionEvent_Handler:Android.Views.View+IOnTouchListenerInvoker, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" jni_signature="(Landroid/view/View;Landroid/view/MotionEvent;)Z" params="android.view.View p0, android.view.MotionEvent p1" retval="boolean" is_dynamically_registered="True" super_call="p0, p1" activate_call="p0, p1" />
+      </methods>
+    </type>
+    <type name="NativeGestureHandler_ScaleListener" package="crc649110d7372c415b47" application_java_class="android.app.Application" mono_runtime_initialization="mono.MonoPackageManager.LoadApplication (context);" extends_type="android.view.ScaleGestureDetector.SimpleOnScaleGestureListener" partial_assembly_qualified_name="WebViewApp.Platforms.Android.NativeGestureHandler+ScaleListener, WebViewApp">
+      <constructors>
+        <constructor name="NativeGestureHandler_ScaleListener" method="n_.ctor:()V:" jni_signature="()V" managed_parameters="" retval="void" is_dynamically_registered="True" />
+      </constructors>
+      <methods>
+        <method name="onScale" method="n_onScale:(Landroid/view/ScaleGestureDetector;)Z:GetOnScale_Landroid_view_ScaleGestureDetector_Handler" jni_signature="(Landroid/view/ScaleGestureDetector;)Z" params="android.view.ScaleGestureDetector p0" retval="boolean" is_dynamically_registered="True" super_call="p0" activate_call="p0" />
       </methods>
     </type>
     <type name="GhostModeReceiver" package="crc649110d7372c415b47" application_java_class="android.app.Application" mono_runtime_initialization="mono.MonoPackageManager.LoadApplication (context);" extends_type="android.content.BroadcastReceiver" partial_assembly_qualified_name="WebViewApp.Platforms.Android.GhostModeReceiver, WebViewApp">
@@ -37,12 +45,46 @@
         <method name="onReceive" method="n_onReceive:(Landroid/content/Context;Landroid/content/Intent;)V:GetOnReceive_Landroid_content_Context_Landroid_content_Intent_Handler" jni_signature="(Landroid/content/Context;Landroid/content/Intent;)V" params="android.content.Context p0, android.content.Intent p1" retval="void" is_dynamically_registered="True" super_call="p0, p1" activate_call="p0, p1" />
       </methods>
     </type>
+    <type name="TransformIconService" package="crc649110d7372c415b47" application_java_class="android.app.Application" mono_runtime_initialization="mono.MonoPackageManager.LoadApplication (context);" extends_type="android.app.Service" partial_assembly_qualified_name="WebViewApp.Platforms.Android.TransformIconService, WebViewApp">
+      <constructors>
+        <constructor name="TransformIconService" method="n_.ctor:()V:" jni_signature="()V" managed_parameters="" retval="void" is_dynamically_registered="True" />
+      </constructors>
+      <methods>
+        <method name="onBind" method="n_onBind:(Landroid/content/Intent;)Landroid/os/IBinder;:GetOnBind_Landroid_content_Intent_Handler" jni_signature="(Landroid/content/Intent;)Landroid/os/IBinder;" params="android.content.Intent p0" retval="android.os.IBinder" is_dynamically_registered="True" super_call="p0" activate_call="p0" />
+        <method name="onCreate" method="n_onCreate:()V:GetOnCreateHandler" jni_signature="()V" retval="void" is_dynamically_registered="True" />
+        <method name="onDestroy" method="n_onDestroy:()V:GetOnDestroyHandler" jni_signature="()V" retval="void" is_dynamically_registered="True" />
+      </methods>
+    </type>
+    <type name="TransformIconService_TransformTouchListener" package="crc649110d7372c415b47" application_java_class="android.app.Application" mono_runtime_initialization="mono.MonoPackageManager.LoadApplication (context);" extends_type="java.lang.Object" partial_assembly_qualified_name="WebViewApp.Platforms.Android.TransformIconService+TransformTouchListener, WebViewApp">
+      <implemented_interfaces>
+        <interface name="android.view.View.OnTouchListener" />
+      </implemented_interfaces>
+      <constructors>
+        <constructor name="TransformIconService_TransformTouchListener" method="n_.ctor:()V:" jni_signature="()V" managed_parameters="" retval="void" is_dynamically_registered="True" />
+        <constructor name="TransformIconService_TransformTouchListener" method="n_.ctor:(Landroid/view/WindowManager$LayoutParams;Landroid/view/WindowManager;Landroid/content/Context;)V:" jni_signature="(Landroid/view/WindowManager$LayoutParams;Landroid/view/WindowManager;Landroid/content/Context;)V" managed_parameters="Android.Views.WindowManagerLayoutParams, Mono.Android:Android.Views.IWindowManager, Mono.Android:Android.Content.Context, Mono.Android" params="android.view.WindowManager.LayoutParams p0, android.view.WindowManager p1, android.content.Context p2" retval="void" is_dynamically_registered="True" super_call="" activate_call="p0, p1, p2" />
+      </constructors>
+      <methods>
+        <method name="onTouch" method="n_onTouch:(Landroid/view/View;Landroid/view/MotionEvent;)Z:GetOnTouch_Landroid_view_View_Landroid_view_MotionEvent_Handler:Android.Views.View+IOnTouchListenerInvoker, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" jni_signature="(Landroid/view/View;Landroid/view/MotionEvent;)Z" params="android.view.View p0, android.view.MotionEvent p1" retval="boolean" is_dynamically_registered="True" super_call="p0, p1" activate_call="p0, p1" />
+      </methods>
+    </type>
+    <type name="TransformService_TransformGestureDetector_ScaleListener" package="crc649110d7372c415b47" application_java_class="android.app.Application" mono_runtime_initialization="mono.MonoPackageManager.LoadApplication (context);" extends_type="android.view.ScaleGestureDetector.SimpleOnScaleGestureListener" partial_assembly_qualified_name="WebViewApp.Platforms.Android.TransformService+TransformGestureDetector+ScaleListener, WebViewApp">
+      <constructors>
+        <constructor name="TransformService_TransformGestureDetector_ScaleListener" method="n_.ctor:()V:" jni_signature="()V" managed_parameters="" retval="void" is_dynamically_registered="True" />
+      </constructors>
+      <methods>
+        <method name="onScale" method="n_onScale:(Landroid/view/ScaleGestureDetector;)Z:GetOnScale_Landroid_view_ScaleGestureDetector_Handler" jni_signature="(Landroid/view/ScaleGestureDetector;)Z" params="android.view.ScaleGestureDetector p0" retval="boolean" is_dynamically_registered="True" super_call="p0" activate_call="p0" />
+      </methods>
+    </type>
   </jcw-types>
   <acw-types partial-assembly-name="WebViewApp" module-name="WebViewApp.dll">
     <type assembly-qualified-name="WebViewApp.MainActivity, WebViewApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="webviewapp.MainActivity" java-key="crc64500a51de1a538666.MainActivity" managed-key="WebViewApp.MainActivity" partial-assembly-qualified-name="WebViewApp.MainActivity, WebViewApp" />
     <type assembly-qualified-name="WebViewApp.MainApplication, WebViewApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="webviewapp.MainApplication" java-key="crc64500a51de1a538666.MainApplication" managed-key="WebViewApp.MainApplication" partial-assembly-qualified-name="WebViewApp.MainApplication, WebViewApp" />
     <type assembly-qualified-name="WebViewApp.Platforms.Android.FloatingIconService, WebViewApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="webviewapp.platforms.android.FloatingIconService" java-key="crc649110d7372c415b47.FloatingIconService" managed-key="WebViewApp.Platforms.Android.FloatingIconService" partial-assembly-qualified-name="WebViewApp.Platforms.Android.FloatingIconService, WebViewApp" />
     <type assembly-qualified-name="WebViewApp.Platforms.Android.FloatingIconService+FloatingTouchListener, WebViewApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="webviewapp.platforms.android.FloatingIconService_FloatingTouchListener" java-key="crc649110d7372c415b47.FloatingIconService_FloatingTouchListener" managed-key="WebViewApp.Platforms.Android.FloatingIconService.FloatingTouchListener" partial-assembly-qualified-name="WebViewApp.Platforms.Android.FloatingIconService+FloatingTouchListener, WebViewApp" />
+    <type assembly-qualified-name="WebViewApp.Platforms.Android.NativeGestureHandler+ScaleListener, WebViewApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="webviewapp.platforms.android.NativeGestureHandler_ScaleListener" java-key="crc649110d7372c415b47.NativeGestureHandler_ScaleListener" managed-key="WebViewApp.Platforms.Android.NativeGestureHandler.ScaleListener" partial-assembly-qualified-name="WebViewApp.Platforms.Android.NativeGestureHandler+ScaleListener, WebViewApp" />
     <type assembly-qualified-name="WebViewApp.Platforms.Android.GhostModeReceiver, WebViewApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="webviewapp.platforms.android.GhostModeReceiver" java-key="crc649110d7372c415b47.GhostModeReceiver" managed-key="WebViewApp.Platforms.Android.GhostModeReceiver" partial-assembly-qualified-name="WebViewApp.Platforms.Android.GhostModeReceiver, WebViewApp" />
+    <type assembly-qualified-name="WebViewApp.Platforms.Android.TransformIconService, WebViewApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="webviewapp.platforms.android.TransformIconService" java-key="crc649110d7372c415b47.TransformIconService" managed-key="WebViewApp.Platforms.Android.TransformIconService" partial-assembly-qualified-name="WebViewApp.Platforms.Android.TransformIconService, WebViewApp" />
+    <type assembly-qualified-name="WebViewApp.Platforms.Android.TransformIconService+TransformTouchListener, WebViewApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="webviewapp.platforms.android.TransformIconService_TransformTouchListener" java-key="crc649110d7372c415b47.TransformIconService_TransformTouchListener" managed-key="WebViewApp.Platforms.Android.TransformIconService.TransformTouchListener" partial-assembly-qualified-name="WebViewApp.Platforms.Android.TransformIconService+TransformTouchListener, WebViewApp" />
+    <type assembly-qualified-name="WebViewApp.Platforms.Android.TransformService+TransformGestureDetector+ScaleListener, WebViewApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="webviewapp.platforms.android.TransformService_TransformGestureDetector_ScaleListener" java-key="crc649110d7372c415b47.TransformService_TransformGestureDetector_ScaleListener" managed-key="WebViewApp.Platforms.Android.TransformService.TransformGestureDetector.ScaleListener" partial-assembly-qualified-name="WebViewApp.Platforms.Android.TransformService+TransformGestureDetector+ScaleListener, WebViewApp" />
   </acw-types>
 </api>

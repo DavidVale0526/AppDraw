@@ -24,11 +24,11 @@ public class FloatingIconService_FloatingTouchListener
 		}
 	}
 
-	public FloatingIconService_FloatingTouchListener (android.view.WindowManager.LayoutParams p0, android.view.WindowManager p1)
+	public FloatingIconService_FloatingTouchListener (android.view.WindowManager.LayoutParams p0, android.view.WindowManager p1, android.content.Context p2)
 	{
 		super ();
 		if (getClass () == FloatingIconService_FloatingTouchListener.class) {
-			mono.android.TypeManager.Activate ("WebViewApp.Platforms.Android.FloatingIconService+FloatingTouchListener, WebViewApp", "Android.Views.WindowManagerLayoutParams, Mono.Android:Android.Views.IWindowManager, Mono.Android", this, new java.lang.Object[] { p0, p1 });
+			mono.android.TypeManager.Activate ("WebViewApp.Platforms.Android.FloatingIconService+FloatingTouchListener, WebViewApp", "Android.Views.WindowManagerLayoutParams, Mono.Android:Android.Views.IWindowManager, Mono.Android:Android.Content.Context, Mono.Android", this, new java.lang.Object[] { p0, p1, p2 });
 		}
 	}
 

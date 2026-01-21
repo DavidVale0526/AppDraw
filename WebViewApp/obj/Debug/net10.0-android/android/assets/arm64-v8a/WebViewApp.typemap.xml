@@ -1,16 +1,24 @@
-<api type="debug" assembly-name="WebViewApp" mvid="39b5b4cef5424e6b94712b7cf1b141f2">
+<api type="debug" assembly-name="WebViewApp" mvid="8d2bc3b62d4d485ca50bcc7ad880fc73">
   <java-to-managed>
-    <entry java-name="crc64500a51de1a538666/MainActivity" managed-name="WebViewApp.MainActivity, WebViewApp" managed-type-token-id="33554445" />
-    <entry java-name="crc64500a51de1a538666/MainApplication" managed-name="WebViewApp.MainApplication, WebViewApp" managed-type-token-id="33554446" />
-    <entry java-name="crc649110d7372c415b47/FloatingIconService" managed-name="WebViewApp.Platforms.Android.FloatingIconService, WebViewApp" managed-type-token-id="33554450" />
-    <entry java-name="crc649110d7372c415b47/FloatingIconService_FloatingTouchListener" managed-name="WebViewApp.Platforms.Android.FloatingIconService+FloatingTouchListener, WebViewApp" managed-type-token-id="33554458" />
-    <entry java-name="crc649110d7372c415b47/GhostModeReceiver" managed-name="WebViewApp.Platforms.Android.GhostModeReceiver, WebViewApp" managed-type-token-id="33554451" />
+    <entry java-name="crc64500a51de1a538666/MainActivity" managed-name="WebViewApp.MainActivity, WebViewApp" managed-type-token-id="33554447" />
+    <entry java-name="crc64500a51de1a538666/MainApplication" managed-name="WebViewApp.MainApplication, WebViewApp" managed-type-token-id="33554448" />
+    <entry java-name="crc649110d7372c415b47/FloatingIconService" managed-name="WebViewApp.Platforms.Android.FloatingIconService, WebViewApp" managed-type-token-id="33554452" />
+    <entry java-name="crc649110d7372c415b47/FloatingIconService_FloatingTouchListener" managed-name="WebViewApp.Platforms.Android.FloatingIconService+FloatingTouchListener, WebViewApp" managed-type-token-id="33554468" />
+    <entry java-name="crc649110d7372c415b47/NativeGestureHandler_ScaleListener" managed-name="WebViewApp.Platforms.Android.NativeGestureHandler+ScaleListener, WebViewApp" managed-type-token-id="33554469" />
+    <entry java-name="crc649110d7372c415b47/GhostModeReceiver" managed-name="WebViewApp.Platforms.Android.GhostModeReceiver, WebViewApp" managed-type-token-id="33554456" />
+    <entry java-name="crc649110d7372c415b47/TransformIconService" managed-name="WebViewApp.Platforms.Android.TransformIconService, WebViewApp" managed-type-token-id="33554458" />
+    <entry java-name="crc649110d7372c415b47/TransformIconService_TransformTouchListener" managed-name="WebViewApp.Platforms.Android.TransformIconService+TransformTouchListener, WebViewApp" managed-type-token-id="33554477" />
+    <entry java-name="crc649110d7372c415b47/TransformService_TransformGestureDetector_ScaleListener" managed-name="WebViewApp.Platforms.Android.TransformService+TransformGestureDetector+ScaleListener, WebViewApp" managed-type-token-id="33554481" />
   </java-to-managed>
   <managed-to-java>
-    <entry java-name="crc64500a51de1a538666/MainActivity" managed-name="WebViewApp.MainActivity, WebViewApp" managed-type-token-id="33554445" />
-    <entry java-name="crc64500a51de1a538666/MainApplication" managed-name="WebViewApp.MainApplication, WebViewApp" managed-type-token-id="33554446" />
-    <entry java-name="crc649110d7372c415b47/FloatingIconService" managed-name="WebViewApp.Platforms.Android.FloatingIconService, WebViewApp" managed-type-token-id="33554450" />
-    <entry java-name="crc649110d7372c415b47/FloatingIconService_FloatingTouchListener" managed-name="WebViewApp.Platforms.Android.FloatingIconService+FloatingTouchListener, WebViewApp" managed-type-token-id="33554458" />
-    <entry java-name="crc649110d7372c415b47/GhostModeReceiver" managed-name="WebViewApp.Platforms.Android.GhostModeReceiver, WebViewApp" managed-type-token-id="33554451" />
+    <entry java-name="crc64500a51de1a538666/MainActivity" managed-name="WebViewApp.MainActivity, WebViewApp" managed-type-token-id="33554447" />
+    <entry java-name="crc64500a51de1a538666/MainApplication" managed-name="WebViewApp.MainApplication, WebViewApp" managed-type-token-id="33554448" />
+    <entry java-name="crc649110d7372c415b47/FloatingIconService" managed-name="WebViewApp.Platforms.Android.FloatingIconService, WebViewApp" managed-type-token-id="33554452" />
+    <entry java-name="crc649110d7372c415b47/FloatingIconService_FloatingTouchListener" managed-name="WebViewApp.Platforms.Android.FloatingIconService+FloatingTouchListener, WebViewApp" managed-type-token-id="33554468" />
+    <entry java-name="crc649110d7372c415b47/NativeGestureHandler_ScaleListener" managed-name="WebViewApp.Platforms.Android.NativeGestureHandler+ScaleListener, WebViewApp" managed-type-token-id="33554469" />
+    <entry java-name="crc649110d7372c415b47/GhostModeReceiver" managed-name="WebViewApp.Platforms.Android.GhostModeReceiver, WebViewApp" managed-type-token-id="33554456" />
+    <entry java-name="crc649110d7372c415b47/TransformIconService" managed-name="WebViewApp.Platforms.Android.TransformIconService, WebViewApp" managed-type-token-id="33554458" />
+    <entry java-name="crc649110d7372c415b47/TransformIconService_TransformTouchListener" managed-name="WebViewApp.Platforms.Android.TransformIconService+TransformTouchListener, WebViewApp" managed-type-token-id="33554477" />
+    <entry java-name="crc649110d7372c415b47/TransformService_TransformGestureDetector_ScaleListener" managed-name="WebViewApp.Platforms.Android.TransformService+TransformGestureDetector+ScaleListener, WebViewApp" managed-type-token-id="33554481" />
   </managed-to-java>
 </api>

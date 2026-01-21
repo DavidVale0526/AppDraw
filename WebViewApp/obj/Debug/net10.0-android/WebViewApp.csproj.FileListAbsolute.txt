@@ -1613,3 +1613,6 @@ C:\Users\HP Pavilioh Gaming\source\repos\WebViewApp\WebViewApp\obj\Debug\net10.0
 C:\Users\HP Pavilioh Gaming\source\repos\WebViewApp\WebViewApp\obj\Debug\net10.0-android\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\HP Pavilioh Gaming\source\repos\WebViewApp\WebViewApp\obj\Debug\net10.0-android\stamp\_ResolveLibraryProjectImports.stamp
 C:\Users\HP Pavilioh Gaming\source\repos\WebViewApp\WebViewApp\obj\Debug\net10.0-android\WebViewApp.sourcelink.json
+C:\Users\HP Pavilioh Gaming\source\repos\WebViewApp\WebViewApp\obj\Debug\net10.0-android\android\src\crc649110d7372c415b47\FloatingIconService.java
+C:\Users\HP Pavilioh Gaming\source\repos\WebViewApp\WebViewApp\obj\Debug\net10.0-android\android\src\crc649110d7372c415b47\FloatingIconService_FloatingTouchListener.java
+C:\Users\HP Pavilioh Gaming\source\repos\WebViewApp\WebViewApp\obj\Debug\net10.0-android\resizetizer\r\drawable\expand_icon.png

@@ -7,6 +7,28 @@
       </constructors>
     </type>
     <type name="MainApplication" package="crc64500a51de1a538666" application_java_class="android.app.Application" mono_runtime_initialization="mono.MonoPackageManager.LoadApplication (context);" extends_type="crc6488302ad6e9e4df1a.MauiApplication" is_application="True" partial_assembly_qualified_name="WebViewApp.MainApplication, WebViewApp" application_constructor="MainApplication" />
+    <type name="FloatingIconService" package="crc649110d7372c415b47" application_java_class="android.app.Application" mono_runtime_initialization="mono.MonoPackageManager.LoadApplication (context);" extends_type="android.app.Service" partial_assembly_qualified_name="WebViewApp.Platforms.Android.FloatingIconService, WebViewApp">
+      <constructors>
+        <constructor name="FloatingIconService" method="n_.ctor:()V:" jni_signature="()V" managed_parameters="" retval="void" is_dynamically_registered="True" />
+      </constructors>
+      <methods>
+        <method name="onBind" method="n_onBind:(Landroid/content/Intent;)Landroid/os/IBinder;:GetOnBind_Landroid_content_Intent_Handler" jni_signature="(Landroid/content/Intent;)Landroid/os/IBinder;" params="android.content.Intent p0" retval="android.os.IBinder" is_dynamically_registered="True" super_call="p0" activate_call="p0" />
+        <method name="onCreate" method="n_onCreate:()V:GetOnCreateHandler" jni_signature="()V" retval="void" is_dynamically_registered="True" />
+        <method name="onDestroy" method="n_onDestroy:()V:GetOnDestroyHandler" jni_signature="()V" retval="void" is_dynamically_registered="True" />
+      </methods>
+    </type>
+    <type name="FloatingIconService_FloatingTouchListener" package="crc649110d7372c415b47" application_java_class="android.app.Application" mono_runtime_initialization="mono.MonoPackageManager.LoadApplication (context);" extends_type="java.lang.Object" partial_assembly_qualified_name="WebViewApp.Platforms.Android.FloatingIconService+FloatingTouchListener, WebViewApp">
+      <implemented_interfaces>
+        <interface name="android.view.View.OnTouchListener" />
+      </implemented_interfaces>
+      <constructors>
+        <constructor name="FloatingIconService_FloatingTouchListener" method="n_.ctor:()V:" jni_signature="()V" managed_parameters="" retval="void" is_dynamically_registered="True" />
+        <constructor name="FloatingIconService_FloatingTouchListener" method="n_.ctor:(Landroid/view/WindowManager$LayoutParams;Landroid/view/WindowManager;)V:" jni_signature="(Landroid/view/WindowManager$LayoutParams;Landroid/view/WindowManager;)V" managed_parameters="Android.Views.WindowManagerLayoutParams, Mono.Android:Android.Views.IWindowManager, Mono.Android" params="android.view.WindowManager.LayoutParams p0, android.view.WindowManager p1" retval="void" is_dynamically_registered="True" super_call="" activate_call="p0, p1" />
+      </constructors>
+      <methods>
+        <method name="onTouch" method="n_onTouch:(Landroid/view/View;Landroid/view/MotionEvent;)Z:GetOnTouch_Landroid_view_View_Landroid_view_MotionEvent_Handler:Android.Views.View+IOnTouchListenerInvoker, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" jni_signature="(Landroid/view/View;Landroid/view/MotionEvent;)Z" params="android.view.View p0, android.view.MotionEvent p1" retval="boolean" is_dynamically_registered="True" super_call="p0, p1" activate_call="p0, p1" />
+      </methods>
+    </type>
     <type name="GhostModeReceiver" package="crc649110d7372c415b47" application_java_class="android.app.Application" mono_runtime_initialization="mono.MonoPackageManager.LoadApplication (context);" extends_type="android.content.BroadcastReceiver" partial_assembly_qualified_name="WebViewApp.Platforms.Android.GhostModeReceiver, WebViewApp">
       <constructors>
         <constructor name="GhostModeReceiver" method="n_.ctor:()V:" jni_signature="()V" managed_parameters="" retval="void" is_dynamically_registered="True" />
@@ -19,6 +41,8 @@
   <acw-types partial-assembly-name="WebViewApp" module-name="WebViewApp.dll">
     <type assembly-qualified-name="WebViewApp.MainActivity, WebViewApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="webviewapp.MainActivity" java-key="crc64500a51de1a538666.MainActivity" managed-key="WebViewApp.MainActivity" partial-assembly-qualified-name="WebViewApp.MainActivity, WebViewApp" />
     <type assembly-qualified-name="WebViewApp.MainApplication, WebViewApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="webviewapp.MainApplication" java-key="crc64500a51de1a538666.MainApplication" managed-key="WebViewApp.MainApplication" partial-assembly-qualified-name="WebViewApp.MainApplication, WebViewApp" />
+    <type assembly-qualified-name="WebViewApp.Platforms.Android.FloatingIconService, WebViewApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="webviewapp.platforms.android.FloatingIconService" java-key="crc649110d7372c415b47.FloatingIconService" managed-key="WebViewApp.Platforms.Android.FloatingIconService" partial-assembly-qualified-name="WebViewApp.Platforms.Android.FloatingIconService, WebViewApp" />
+    <type assembly-qualified-name="WebViewApp.Platforms.Android.FloatingIconService+FloatingTouchListener, WebViewApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="webviewapp.platforms.android.FloatingIconService_FloatingTouchListener" java-key="crc649110d7372c415b47.FloatingIconService_FloatingTouchListener" managed-key="WebViewApp.Platforms.Android.FloatingIconService.FloatingTouchListener" partial-assembly-qualified-name="WebViewApp.Platforms.Android.FloatingIconService+FloatingTouchListener, WebViewApp" />
     <type assembly-qualified-name="WebViewApp.Platforms.Android.GhostModeReceiver, WebViewApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="webviewapp.platforms.android.GhostModeReceiver" java-key="crc649110d7372c415b47.GhostModeReceiver" managed-key="WebViewApp.Platforms.Android.GhostModeReceiver" partial-assembly-qualified-name="WebViewApp.Platforms.Android.GhostModeReceiver, WebViewApp" />
   </acw-types>
 </api>

@@ -10,6 +10,8 @@
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
   <permission android:name="com.companyname.webviewapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="signature" />
   <uses-permission android:name="com.companyname.webviewapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
   <application android:name="crc64500a51de1a538666.MainApplication" android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:debuggable="true" android:extractNativeLibs="true" android:icon="@mipmap/appicon" android:label="WebViewApp" android:roundIcon="@mipmap/appicon_round" android:supportsRtl="true">
@@ -19,6 +21,7 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+    <service android:name="crc649110d7372c415b47.FloatingIconService" android:enabled="true" android:exported="false" />
     <receiver android:name="crc649110d7372c415b47.GhostModeReceiver" android:enabled="true" android:exported="false" />
     <activity android:name="crc6468b6408a11370c2f.WebAuthenticatorIntermediateActivity" android:configChanges="orientation|screenSize" android:exported="false" />
     <provider android:name="microsoft.maui.essentials.fileProvider" android:authorities="com.companyname.webviewapp.fileProvider" android:exported="false" android:grantUriPermissions="true">

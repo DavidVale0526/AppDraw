@@ -1,12 +1,85 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\HP Pavilioh Gaming\\source\\repos\\WebViewApp\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{34443B4E-6742-90DC-5335-0FFAAA055DC7}|WebViewApp\\WebViewApp.csproj|c:\\users\\hp pavilioh gaming\\source\\repos\\webviewapp\\webviewapp\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{34443B4E-6742-90DC-5335-0FFAAA055DC7}|WebViewApp\\WebViewApp.csproj|solutionrelative:webviewapp\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34443B4E-6742-90DC-5335-0FFAAA055DC7}|WebViewApp\\WebViewApp.csproj|c:\\users\\hp pavilioh gaming\\source\\repos\\webviewapp\\webviewapp\\ighostmodeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{34443B4E-6742-90DC-5335-0FFAAA055DC7}|WebViewApp\\WebViewApp.csproj|solutionrelative:webviewapp\\ighostmodeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34443B4E-6742-90DC-5335-0FFAAA055DC7}|WebViewApp\\WebViewApp.csproj|c:\\users\\hp pavilioh gaming\\source\\repos\\webviewapp\\webviewapp\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{34443B4E-6742-90DC-5335-0FFAAA055DC7}|WebViewApp\\WebViewApp.csproj|solutionrelative:webviewapp\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34443B4E-6742-90DC-5335-0FFAAA055DC7}|WebViewApp\\WebViewApp.csproj|c:\\users\\hp pavilioh gaming\\source\\repos\\webviewapp\\webviewapp\\webtab.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{34443B4E-6742-90DC-5335-0FFAAA055DC7}|WebViewApp\\WebViewApp.csproj|solutionrelative:webviewapp\\webtab.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\HP Pavilioh Gaming\\source\\repos\\WebViewApp\\WebViewApp\\App.xaml",
+              "RelativeDocumentMoniker": "WebViewApp\\App.xaml",
+              "ToolTip": "C:\\Users\\HP Pavilioh Gaming\\source\\repos\\WebViewApp\\WebViewApp\\App.xaml",
+              "RelativeToolTip": "WebViewApp\\App.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-21T02:35:01.824Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IGhostModeService.cs",
+              "DocumentMoniker": "C:\\Users\\HP Pavilioh Gaming\\source\\repos\\WebViewApp\\WebViewApp\\IGhostModeService.cs",
+              "RelativeDocumentMoniker": "WebViewApp\\IGhostModeService.cs",
+              "ToolTip": "C:\\Users\\HP Pavilioh Gaming\\source\\repos\\WebViewApp\\WebViewApp\\IGhostModeService.cs",
+              "RelativeToolTip": "WebViewApp\\IGhostModeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-21T02:34:43.725Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "C:\\Users\\HP Pavilioh Gaming\\source\\repos\\WebViewApp\\WebViewApp\\MainPage.xaml",
+              "RelativeDocumentMoniker": "WebViewApp\\MainPage.xaml",
+              "ToolTip": "C:\\Users\\HP Pavilioh Gaming\\source\\repos\\WebViewApp\\WebViewApp\\MainPage.xaml",
+              "RelativeToolTip": "WebViewApp\\MainPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-21T02:34:24.812Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "WebTab.cs",
+              "DocumentMoniker": "C:\\Users\\HP Pavilioh Gaming\\source\\repos\\WebViewApp\\WebViewApp\\WebTab.cs",
+              "RelativeDocumentMoniker": "WebViewApp\\WebTab.cs",
+              "ToolTip": "C:\\Users\\HP Pavilioh Gaming\\source\\repos\\WebViewApp\\WebViewApp\\WebTab.cs",
+              "RelativeToolTip": "WebViewApp\\WebTab.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAA1wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-21T02:33:43.486Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

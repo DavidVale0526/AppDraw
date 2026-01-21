@@ -1,17 +1,172 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WebViewApp.MainPage">
+             xmlns:local="clr-namespace:WebViewApp"
+             x:Class="WebViewApp.MainPage"
+             Shell.NavBarIsVisible="False">
 
-    <Grid RowDefinitions="*, Auto">
-        <WebView Grid.Row="0" Source="https://www.google.com" />
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:SelectedColorConverter x:Key="SelectedColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto, *" RowSpacing="5">
         
-        <Button Grid.Row="1"
-                Text="Activar Modo Fantasma"
-                Clicked="OnGhostModeClicked"
-                Margin="20"
-                BackgroundColor="DarkSlateBlue"
-                TextColor="White" />
+        <!-- Top UI Container (Can be hidden) -->
+        <VerticalStackLayout x:Name="TopLevelUi" Grid.Row="0" Spacing="5">
+            <!-- Tabs and Main Actions Section -->
+            <Grid ColumnDefinitions="*, Auto, Auto, Auto, Auto, Auto, Auto" BackgroundColor="#f0f0f0" Padding="5">
+                <CollectionView x:Name="TabsCollection" 
+                                Grid.Column="0"
+                                HorizontalOptions="Fill"
+                                HeightRequest="40"
+                                ItemsLayout="HorizontalList"
+                                SelectionMode="Single"
+                                SelectionChanged="OnTabSelectionChanged">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border StrokeShape="RoundRectangle 8" 
+                                    Stroke="#d0d0d0"
+                                    StrokeThickness="1"
+                                    Margin="4,2" 
+                                    Padding="12,0"
+                                    BackgroundColor="{Binding IsSelected, Converter={StaticResource SelectedColorConverter}}">
+                                <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                                    <Label Text="{Binding Title}" 
+                                           VerticalOptions="Center" 
+                                           MaxLines="1" 
+                                           WidthRequest="100"
+                                           FontSize="12"
+                                           TextColor="#333333"
+                                           VerticalTextAlignment="Center"/>
+                                    <Button Text="×" 
+                                            FontSize="14" 
+                                            Padding="0" 
+                                            WidthRequest="20" 
+                                            HeightRequest="20" 
+                                            BackgroundColor="Transparent"
+                                            TextColor="#999999"
+                                            Clicked="OnCloseTabClicked" 
+                                            CommandParameter="{Binding .}"/>
+                                </HorizontalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Button Grid.Column="1" Text="+" Clicked="OnNewTabClicked" WidthRequest="40" HeightRequest="40" Margin="2,0"/>
+                <Button Grid.Column="2" x:Name="DesktopModeBtn" Text="📱" Clicked="OnToggleDesktopModeClicked" WidthRequest="40" HeightRequest="40" Margin="2,0" BackgroundColor="Transparent" TextColor="#512BD4"/>
+                <Button Grid.Column="3" Text="🔄" Clicked="OnRotateImageClicked" WidthRequest="40" HeightRequest="40" Margin="2,0" BackgroundColor="Transparent" TextColor="#512BD4" ToolTipProperties.Text="Rotar Imagen"/>
+                <Button Grid.Column="4" Text="🖼️" Clicked="OnPickImageClicked" WidthRequest="40" HeightRequest="40" Margin="2,0" BackgroundColor="Transparent" TextColor="#512BD4"/>
+                <Button Grid.Column="5" Text="👻" Clicked="OnToggleGhostModeClicked" WidthRequest="40" HeightRequest="40" Margin="2,0" BackgroundColor="Transparent" TextColor="#512BD4"/>
+                <Button Grid.Column="6" Text="📍" Clicked="OnShowFloatingIconClicked" WidthRequest="40" HeightRequest="40" Margin="2,0" BackgroundColor="Transparent" TextColor="#512BD4"/>
+            </Grid>
+
+            <!-- Navigation Bar -->
+            <Grid ColumnDefinitions="Auto, Auto, Auto, *, Auto" ColumnSpacing="5" Padding="10,0">
+                <Button Grid.Column="0" Text="◀" WidthRequest="40" Clicked="OnBackClicked" BackgroundColor="Transparent" TextColor="Black"/>
+                <Button Grid.Column="1" Text="▶" WidthRequest="40" Clicked="OnForwardClicked" BackgroundColor="Transparent" TextColor="Black"/>
+                <Button Grid.Column="2" Text="↻" WidthRequest="40" Clicked="OnRefreshClicked" BackgroundColor="Transparent" TextColor="Black"/>
+                <Entry Grid.Column="3" x:Name="UrlEntry" 
+                       Placeholder="Ingresa URL" 
+                       HorizontalOptions="Fill"
+                       VerticalOptions="Center" 
+                       Completed="OnUrlCompleted"
+                       Keyboard="Url"/>
+                <Button Grid.Column="4" Text="⭐" Clicked="OnAddFavoriteClicked" WidthRequest="40" BackgroundColor="Transparent" TextColor="#FFD700" FontSize="20"/>
+            </Grid>
+
+            <!-- Favorites Bar -->
+            <Grid BackgroundColor="#fafafa" HeightRequest="45">
+                <CollectionView x:Name="FavoritesCollection"
+                                ItemsLayout="HorizontalList"
+                                SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <HorizontalStackLayout Padding="10,5" Spacing="5">
+                                <Border Padding="8,4" StrokeShape="RoundRectangle 12" StrokeThickness="0" BackgroundColor="#e0e0e0">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnFavoriteSelected" CommandParameter="{Binding .}"/>
+                                    </Border.GestureRecognizers>
+                                    <HorizontalStackLayout Spacing="5">
+                                        <Label Text="{Binding Icon}" VerticalOptions="Center" InputTransparent="True"/>
+                                        <Label Text="{Binding Title}" VerticalOptions="Center" FontSize="12" MaxLines="1" TextColor="#333333" InputTransparent="True"/>
+                                        <Button Text="×" Clicked="OnRemoveFavoriteClicked" CommandParameter="{Binding .}" 
+                                                FontSize="10" WidthRequest="18" HeightRequest="18" Padding="0" 
+                                                BackgroundColor="Transparent" TextColor="#888888" VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
+                                </Border>
+                            </HorizontalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+            
+            <!-- Opacity Control -->
+            <Grid ColumnDefinitions="Auto, *, Auto" Padding="10,0" HeightRequest="40" BackgroundColor="#f8f8f8">
+                <Label Grid.Column="0" Text="👻 Opacidad:" VerticalOptions="Center" FontSize="12" TextColor="#555"/>
+                <Slider Grid.Column="1" x:Name="OpacitySlider" Minimum="0.1" Maximum="1.0" Value="0.5" 
+                        ValueChanged="OnOpacityValueChanged" VerticalOptions="Center" Margin="10,0"/>
+                <Label Grid.Column="2" Text="{Binding Source={x:Reference OpacitySlider}, Path=Value, StringFormat='{0:P0}'}" 
+                       VerticalOptions="Center" FontSize="12" TextColor="#555" WidthRequest="40" HorizontalTextAlignment="End"/>
+            </Grid>
+        </VerticalStackLayout>
+
+        <!-- Content Area -->
+        <Grid Grid.Row="1">
+            <WebView x:Name="MainWebView" 
+                    Navigating="OnWebViewNavigating" 
+                    Navigated="OnWebViewNavigated"/>
+            
+            <Grid x:Name="ImageContainer" IsVisible="False">
+                <Image x:Name="OverlayImage"
+                       Aspect="AspectFit"
+                       BackgroundColor="Black"
+                       HorizontalOptions="Fill"
+                       VerticalOptions="Fill">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnImageTapped" NumberOfTapsRequired="1" />
+                        <TapGestureRecognizer Tapped="OnImageDoubleTapped" NumberOfTapsRequired="2" />
+                        <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <!-- Manual Zoom Controls -->
+                <VerticalStackLayout VerticalOptions="End" HorizontalOptions="End" Margin="20" Spacing="15">
+                    <Button Text="+" 
+                            Clicked="OnZoomInClicked" 
+                            WidthRequest="60" 
+                            HeightRequest="60" 
+                            CornerRadius="30" 
+                            BackgroundColor="#512BD4" 
+                            TextColor="White" 
+                            FontSize="24"
+                            Shadow="{Shadow Brush=Black, Offset='2,2', Radius=5, Opacity=0.5}"/>
+                    <Button Text="-" 
+                            Clicked="OnZoomOutClicked" 
+                            WidthRequest="60" 
+                            HeightRequest="60" 
+                            CornerRadius="30" 
+                            BackgroundColor="#512BD4" 
+                            TextColor="White" 
+                            FontSize="24"
+                            Shadow="{Shadow Brush=Black, Offset='2,2', Radius=5, Opacity=0.5}"/>
+                </VerticalStackLayout>
+            </Grid>
+
+            <!-- Floating UI Toggle Button (Fullscreen) -->
+            <ImageButton Clicked="OnToggleUiClicked" 
+                         Source="expand_icon.png"
+                         BackgroundColor="#512BD4"
+                         WidthRequest="50"
+                         HeightRequest="50"
+                         CornerRadius="25"
+                         VerticalOptions="Start"
+                         HorizontalOptions="End"
+                         Margin="15"
+                         Padding="10"
+                         Shadow="{Shadow Brush=Black, Offset='1,1', Radius=5, Opacity=0.4}"/>
+        </Grid>
     </Grid>
 
 </ContentPage>

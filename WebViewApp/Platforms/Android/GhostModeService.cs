@@ -11,9 +11,24 @@ public class GhostModeService : IGhostModeService
 {
     private const string ChannelId = "ghost_mode_channel";
     private const int NotificationId = 1001;
+    private bool _isGhostModeActive = false;
+    private bool _isFloatingIconActive = false;
+    private float _opacity = 0.5f;
+
+    public float Opacity
+    {
+        get => _opacity;
+        set
+        {
+            _opacity = value;
+            if (_isGhostModeActive) ApplyOpacity(_opacity);
+        }
+    }
 
     public async Task EnableGhostMode()
     {
+        if (_isGhostModeActive) return;
+
         var activity = Microsoft.Maui.ApplicationModel.Platform.CurrentActivity;
         if (activity == null) return;
 
@@ -37,16 +52,34 @@ public class GhostModeService : IGhostModeService
             activity.Window.AddFlags(WindowManagerFlags.NotTouchable);
             activity.Window.AddFlags(WindowManagerFlags.NotFocusable);
 
-            var attributes = activity.Window.Attributes;
-            attributes.Alpha = 0.5f;
-            activity.Window.Attributes = attributes;
+            ApplyOpacityInternal(activity, _opacity);
 
+            _isGhostModeActive = true;
             ShowNotification(activity);
         });
     }
 
+    private void ApplyOpacity(float alpha)
+    {
+        var activity = Microsoft.Maui.ApplicationModel.Platform.CurrentActivity;
+        if (activity == null) return;
+        activity.RunOnUiThread(() => ApplyOpacityInternal(activity, alpha));
+    }
+
+    private void ApplyOpacityInternal(Activity activity, float alpha)
+    {
+        var attributes = activity.Window.Attributes;
+        if (attributes != null)
+        {
+            attributes.Alpha = alpha;
+            activity.Window.Attributes = attributes;
+        }
+    }
+
     public void DisableGhostMode()
     {
+        if (!_isGhostModeActive) return;
+
         var activity = Microsoft.Maui.ApplicationModel.Platform.CurrentActivity;
         if (activity == null) return;
 
@@ -59,8 +92,72 @@ public class GhostModeService : IGhostModeService
             attributes.Alpha = 1.0f;
             activity.Window.Attributes = attributes;
 
+            _isGhostModeActive = false;
             CancelNotification(activity);
         });
+    }
+
+    public void ToggleGhostMode()
+    {
+        if (_isGhostModeActive)
+            DisableGhostMode();
+        else
+            _ = EnableGhostMode();
+    }
+
+    public void RequestOverlayPermission()
+    {
+        var activity = Microsoft.Maui.ApplicationModel.Platform.CurrentActivity;
+        if (activity == null) return;
+
+        if (!global::Android.Provider.Settings.CanDrawOverlays(activity))
+        {
+            var intent = new Intent(global::Android.Provider.Settings.ActionManageOverlayPermission,
+                global::Android.Net.Uri.Parse("package:" + activity.PackageName));
+            activity.StartActivity(intent);
+        }
+        else
+        {
+            _ = ToggleFloatingIconInternal(activity);
+        }
+    }
+
+    public void ToggleFloatingIcon()
+    {
+        var activity = Microsoft.Maui.ApplicationModel.Platform.CurrentActivity;
+        if (activity == null) return;
+        _ = ToggleFloatingIconInternal(activity);
+    }
+
+    private async Task ToggleFloatingIconInternal(Activity activity)
+    {
+        if (_isFloatingIconActive)
+        {
+            StopFloatingIcon(activity);
+            _isFloatingIconActive = false;
+        }
+        else
+        {
+            if (!global::Android.Provider.Settings.CanDrawOverlays(activity))
+            {
+                RequestOverlayPermission();
+                return;
+            }
+            StartFloatingIcon(activity);
+            _isFloatingIconActive = true;
+        }
+    }
+
+    private void StartFloatingIcon(Activity activity)
+    {
+        var intent = new Intent(activity, typeof(FloatingIconService));
+        activity.StartService(intent);
+    }
+
+    private void StopFloatingIcon(Activity activity)
+    {
+        var intent = new Intent(activity, typeof(FloatingIconService));
+        activity.StopService(intent);
     }
 
     private void ShowNotification(Activity activity)
